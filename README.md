@@ -22,7 +22,7 @@ FreeSheet also 'onboards' any of your files into dynamically generated jupyter n
 <b>FreeSheet supports three main actions:</b>
 
 * Upload - Upload a csv of data either directly to your cortx instance or IPFS.
-* Exchange - exchange data sets effortlessly between either ipfs URL's and cortx directories.
+* Exchange - push data sets effortlessly from your Cortx or AWS-hosted node to IPFS.
 * Access - Onboard your data sets immediately into Jupyter notebooks.
 
 ## Running the project
