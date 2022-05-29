@@ -38,6 +38,8 @@ Define the following environment variables
 From the root folder:
 `yarn; yarn start`
 
+The client (website) should now be running on port 3000.
+
 ### Server
 Define the following environment variables
 <pre>
@@ -48,6 +50,8 @@ Define the following environment variables
 
 From the `/server` folder:
 `yarn; yarn start`
+
+The server should now be running on port 3001.
 
 ## How we built it
 

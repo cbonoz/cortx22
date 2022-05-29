@@ -18,8 +18,6 @@ export function getAverage(array) {
 
 const createIpfsCode = (ipfsUrl) => {
   const csvUrl = `${ipfsUrl}/${DATA_FILE_NAME}`
-
-
   return `
   {
     "cells": [

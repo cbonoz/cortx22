@@ -1,5 +1,5 @@
 import axios from "axios";
-const BASE_URL = "http://localhost:8000";
+const BASE_URL = "http://localhost:3001";
 
 const instance = axios.create({
   baseURL: BASE_URL,
@@ -7,10 +7,12 @@ const instance = axios.create({
   headers: {},
 });
 
-export const getRows = (body) => {
-  return instance.post("/fetch", body);
+export const getObject = (bucket, objectId) => {
+  const url = `/object/${bucket}/${objectId}`
+  return instance.get(url)
 };
 
-export const uploadRows = (body) => {
-  return instance.post("/upload", body);
+export const listObjects = (bucket) => {
+  const url = `/objects/${bucket}`
+  return instance.get(url)
 };
