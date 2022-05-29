@@ -1,0 +1,26 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "free-sheet backend",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/cbonoz/cortx22"
+  },
+  "keywords": [
+    "cortx",
+    "filecoin",
+    "ipfs",
+    "nodejs"
+  ],
+  "author": "Chris Buonocore",
+  "license": "MIT",
+  "dependencies": {
+    "aws-sdk": "^2.1145.0",
+    "fastify": "^3.29.0"
+  }
+}
