@@ -86,7 +86,7 @@ function Exchange(props) {
         title: 'Onboard',
         key: 'onboard',
         render: r => {
-          return <Button disabled={onboardLoading} onClick={() => pushFile(r)}>Onboard</Button>
+          return <Button loading={onboardLoading} disabled={onboardLoading} onClick={() => pushFile(r)}>Onboard</Button>
         }
       },
     ];
