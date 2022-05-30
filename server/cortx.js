@@ -33,30 +33,42 @@ const getKey = key => `${FILE_BASE}${key}`
 export const listObjects = async (Bucket) => {
   console.log("Listing objects...");
   let listObjectsResults = await S3.listObjects({ Bucket, Prefix: FILE_BASE }).promise();
-  console.dir(listObjectsResults);
+  console.log('results', listObjectsResults);
   return listObjectsResults;
 };
 
 export const getObject = async (Bucket, key) => {
   // Get an object
   console.log("Getting an object...");
-  let getObjectResults = await S3.getObject({ Bucket, Key: getKey(key) }).promise();
-  console.dir(getObjectResults);
+  const Key = getKey(key)
+  let getObjectResults = await S3.getObject({ Bucket, Key }).promise();
+  console.log('getObject', getObjectResults);
   return getObjectResults;
 };
 
 export const putObject = async (Bucket, key, Body) => {
   // Put an object
-  console.log("Putting an object...");
-  let putObjectResults = await S3.putObject({ Bucket, Key: getKey(key), Body }).promise();
+  const Key = getKey(key)
+  console.log("Putting an object...", Bucket, Key, Body.length);
+  let putObjectResults = await S3.putObject({ Bucket, Key, Body }).promise();
   console.dir(putObjectResults);
   return putObjectResults;
 };
 
+// Create a bucket
+export const createBucket = async (Bucket) => {
+  console.log("Creating a bucket:" + BUCKET_NAME);
+  const bucketRequest = S3.createBucket({ Bucket, CreateBucketConfiguration: { LocationConstraint: ""}});
+  let createBucketResults = await bucketRequest.promise();
+  console.log("created bucket: " + JSON.stringify(createBucketResults));
+  return createBucketResults
+}
+
 export const deleteObject = async (Bucket, key) => {
   // Delete an object
   console.log("Deleting an object...");
-  let deleteObjectResults = await S3.deleteObject({ Bucket, Key: getKey(key) }).promise();
+  const Key = getKey(key)
+  let deleteObjectResults = await S3.deleteObject({ Bucket, Key }).promise();
   console.dir(deleteObjectResults);
   return deleteObjectResults;
 };

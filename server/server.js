@@ -2,10 +2,23 @@
 // const fastify = require('fastify')({ logger: true })
 import * as Fastify from 'fastify'
 import mp from '@fastify/multipart'
-import { listObjects, putObject } from './cortx'
+import cors from '@fastify/cors'
+import { getObject, listObjects, putObject } from './cortx.js'
+
 const fastify = Fastify.fastify({logger: true})
 fastify.register(mp)
-
+fastify.register(cors, { 
+  origin: (origin, cb) => {
+    const hostname = new URL(origin).hostname
+    if(hostname === "localhost"){
+      //  Request from localhost will pass
+      cb(null, true)
+      return
+    }
+    // Generate an error on other origins, disabling access
+    cb(new Error("Not allowed"), false)
+  }
+})
 
 
 // Run the server!
@@ -37,13 +50,11 @@ fastify.get('/objects/:bucket', async (request, reply) => {
 
 fastify.post('/object/:bucket', async (request, reply) => {
   const {params} = request
-  console.log('put object', bucket)
+  console.log('put object', params.bucket)
   const data = await request.file()
 
   return await putObject(params.bucket, data.filename, await data.toBuffer())
 })
-
-
 
 
 start()
