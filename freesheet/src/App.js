@@ -43,7 +43,7 @@ function App() {
             <Route path="/" element={<About />} />
             <Route path="/upload" element={<UploadPage />} />
             <Route path="/exchange" element={<Exchange />} />
-            <Route path="/access" element={<Access />} />
+            <Route path="/onboard/:cid" element={<Access />} />
             <Route path="/about" element={<About />} />
           </Routes>
         </Content>

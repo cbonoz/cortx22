@@ -1,5 +1,6 @@
 {
-  "name": "graph-re",
+  "name": "freesheet",
+  "description": "FreeSheet client code",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

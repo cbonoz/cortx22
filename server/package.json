@@ -1,15 +1,13 @@
 {
-  "name": "server",
+  "name": "freesheet-server",
   "version": "1.0.0",
   "description": "free-sheet backend",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "start": "node index.js",
+    "start": "node server.js",
+    "bucket": "node createBucket.js",
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "github.com/cbonoz/cortx22"
   },
   "keywords": [
     "cortx",
@@ -20,6 +18,7 @@
   "author": "Chris Buonocore",
   "license": "MIT",
   "dependencies": {
+    "@fastify/multipart": "^6.0.0",
     "aws-sdk": "^2.1145.0",
     "fastify": "^3.29.0"
   }

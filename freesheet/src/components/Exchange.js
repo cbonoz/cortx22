@@ -1,9 +1,11 @@
 import { Button, Input, Spin } from "antd";
 import React, { useState, useEffect } from "react";
 import CSVReader from "react-csv-reader";
+import { useNavigate } from "react-router-dom";
 
-import { listObjects, uploadRows } from "../util/api";
+import { getObject, listObjects, uploadRows } from "../util/api";
 import { APP_NAME } from "../util/constants";
+import { storeFiles } from "../util/stor";
 
 function Exchange(props) {
   const [loading, setLoading] = useState(false);
@@ -11,6 +13,8 @@ function Exchange(props) {
   // const [data, setData] = useState();
   const [error, setError] = useState()
   const [objects, setObjects] = useState()
+  const [cid, setCid] = useState()
+  const navigate = useNavigate()
 
   const list = async () => {
     if (!bucket) {
@@ -29,6 +33,30 @@ function Exchange(props) {
     }
   }
 
+  // Push the file from the AWS instance to IPFS.
+  const pushFile = async (objectId) => {
+    setLoading(true)
+    let result
+
+    try {
+      // TODO: push file to IPFS and render onboard button + IPFS url.
+
+      const obj = await getObject(bucket, objectId)
+
+      console.log('getObject', obj)
+      // result = await storeFiles([body])
+      // Once file pushed to IFPS, set the active cid.
+      setCid(result)
+    } catch (e) {
+      console.error(e)
+    } finally {
+      setLoading(false)
+      return;
+    }
+
+
+  }
+
   return (
     <div className="container">
       <Input prefix="Bucket:" value={bucket} onChange={e => setBucket(e.target.value)}/>
@@ -41,6 +69,9 @@ function Exchange(props) {
           </span>
         })}
         </div>}
+
+
+        {cid && <Button type="primary" className="standard-btn" onClick={() => navigate(`/onboard/${cid}`)}>Onboard</Button>}
 
     
     </div>

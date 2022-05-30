@@ -96,6 +96,8 @@ const createIpfsCode = (ipfsUrl) => {
   `
 }
 
+export const ipfsUrl = (cid) => `ipfs.io/ipfs/${cid}`
+
 export const downloadNotebookFile = async (ipfsUrl) => {
   const code = createIpfsCode(ipfsUrl)
   const element = document.createElement("a");

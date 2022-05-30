@@ -16,3 +16,12 @@ export const listObjects = (bucket) => {
   const url = `/objects/${bucket}`
   return instance.get(url)
 };
+
+export const putObject = (bucket, file) => {
+  const url = `/object/${bucket}`
+  return instance.post(url, file, {
+    headers: {
+      'Content-Type': 'multipart/form-data'
+    }
+  })
+};
