@@ -1,25 +1,24 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { Button } from 'antd'
+import {CloudDownloadOutlined} from '@ant-design/icons'
 import { downloadNotebookFile } from '../util'
+import { ipfsUrl } from '../util/stor'
 
-function DownloadNotebook({url}) {
+function DownloadNotebook({cid, fileName}) {
 
     const downloadNotebook = () => {
-        downloadNotebookFile(url)
+        downloadNotebookFile(ipfsUrl(cid, fileName))
     }
 
+  const url = ipfsUrl(cid)
 
   return (
     <div>
         <h1>Download Notebook</h1>
         <a href={url} target="_blank">{url}</a>
-        <br/>
+        <p>Target file: <b>{fileName}</b></p>
 
-        <Button className='standard-btn' onClick={downloadNotebook} type="primary">Download Notebook</Button>
-
-
-
+        <Button className='standard-btn' onClick={downloadNotebook} type="primary">Download Notebook&nbsp;<CloudDownloadOutlined /></Button>
     </div>
   )
 }

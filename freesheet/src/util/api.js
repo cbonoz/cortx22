@@ -3,7 +3,7 @@ const BASE_URL = "http://localhost:3001";
 
 const instance = axios.create({
   baseURL: BASE_URL,
-  timeout: 10000,
+  timeout: -1,
   headers: {},
 });
 
@@ -19,9 +19,8 @@ export const listObjects = (bucket) => {
 
 export const putObject = (bucket, file) => {
   const url = `/object/${bucket}`
-  return instance.post(url, file, {
-    headers: {
-      'Content-Type': 'multipart/form-data'
-    }
-  })
+  const config = { headers: { 'Content-Type': 'multipart/form-data' } };
+  let fd = new FormData();
+  fd.append('file',file)
+  return instance.post(url, fd, config)
 };

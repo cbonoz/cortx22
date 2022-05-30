@@ -1,15 +1,14 @@
 import { Layout, Menu } from "antd";
 import { APP_NAME } from "./util/constants";
-
 import { Routes, Route, Link, Router } from "react-router-dom";
 import UploadPage from "./components/UploadPage";
-
-import logo from "./assets/logo.png";
-import "antd/dist/antd.min.css";
-import "./App.css";
 import About from "./components/About";
 import Exchange from "./components/Exchange";
-import Access from "./components/Access";
+import Onboard from "./components/Onboard";
+import logo from "./assets/logo.png";
+
+import "antd/dist/antd.min.css";
+import "./App.css";
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -30,8 +29,8 @@ function App() {
             <Link to="/exchange">
               <Menu.Item key="2">Exchange</Menu.Item>
             </Link>
-            <Link to="/access">
-              <Menu.Item key="3">Access</Menu.Item>
+            <Link to="/onboard">
+              <Menu.Item key="3">Onboard</Menu.Item>
             </Link>
             <Link to="/about">
               <Menu.Item key="4">About</Menu.Item>
@@ -43,7 +42,8 @@ function App() {
             <Route path="/" element={<About />} />
             <Route path="/upload" element={<UploadPage />} />
             <Route path="/exchange" element={<Exchange />} />
-            <Route path="/onboard/:cid" element={<Access />} />
+            <Route path="/onboard/:cid/:fName" element={<Onboard />} />
+            <Route path="/onboard" element={<Onboard />} />
             <Route path="/about" element={<About />} />
           </Routes>
         </Content>

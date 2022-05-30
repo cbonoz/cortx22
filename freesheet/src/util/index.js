@@ -12,14 +12,14 @@ export const formatMoney = (m) => {
   return formatter.format(m);
 };
 
+export const getFileName = (fullPath) => fullPath.replace(/^.*[\\\/]/, '');
+
 export function getAverage(array) {
   return array.reduce((a, b) => a + b) / array.length;
 }
 
 const createIpfsCode = (ipfsUrl) => {
-  const csvUrl = `${ipfsUrl}/${DATA_FILE_NAME}`
-  return `
-  {
+  return {
     "cells": [
      {
       "cell_type": "code",
@@ -29,7 +29,7 @@ const createIpfsCode = (ipfsUrl) => {
       "outputs": [],
       "source": [
        "import pandas as pd\n",
-       "INPUT_URL = '${csvUrl}'"
+       `INPUT_URL = '${ipfsUrl}'`
       ]
      },
      {
@@ -93,15 +93,12 @@ const createIpfsCode = (ipfsUrl) => {
     "nbformat": 4,
     "nbformat_minor": 5
    }
-  `
 }
 
-export const ipfsUrl = (cid) => `ipfs.io/ipfs/${cid}`
-
 export const downloadNotebookFile = async (ipfsUrl) => {
-  const code = createIpfsCode(ipfsUrl)
+  const codeObj = createIpfsCode(ipfsUrl)
   const element = document.createElement("a");
-  const file = new Blob([JSON.parse(code)], {
+  const file = new Blob([JSON.stringify(codeObj)], {
     type: "text/plain"
   });
   element.href = URL.createObjectURL(file);
