@@ -18,7 +18,7 @@ const credentials = new AWS.Credentials(s3AccessKeyID, s3SecretAccessKey);
 // const region = 'us-east-1' // "us-east-1";
 export const S3 = new AWS.S3({endpoint, credentials, s3ForcePathStyle: true, apiVersion: '2006-03-01'});
 // S3.config.region = undefined
-console.log('init server', S3.config.region, s3Endpoint, s3AccessKeyID.substring(0, 4), s3SecretAccessKey.substring(0,4));
+console.log('init server', S3.config.region, s3Endpoint, s3AccessKeyID, s3SecretAccessKey);
 
 // Example data.
 // let testBucketName = "testbucket"; // Bucket
@@ -28,6 +28,11 @@ console.log('init server', S3.config.region, s3Endpoint, s3AccessKeyID.substring
 const FILE_BASE = `files/`
 
 const getKey = key => `${FILE_BASE}${key}`
+
+export const getBuckets = async ()  => {
+  console.log("Listing buckets...");
+  return await S3.listBuckets().promise();
+}
 
 // List objects
 export const listObjects = async (Bucket) => {

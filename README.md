@@ -53,6 +53,12 @@ From the `/server` folder:
 
 The server should now be running on port 3001.
 
+#### Verifying the end to end connection
+
+If the front end is able to successfully connect to your running CortX or S3 instance, you should see a 'Connected' indicator here with the ability to select a bucket from the dropdown here:
+
+<img src="./img/connected.png" width=600/>
+
 ## How we built it
 
 * ReactJS
@@ -65,9 +71,11 @@ The server should now be running on port 3001.
 * Plugging in variable data source url's into pregenerated notebooks
 
 ## Accomplishments that we're proud of
-It works
+It works.
 
 ## What we learned
+* How to connect to a running CortX instance
+* Dynamically generate a Python notebook from an arbitrary hosted data url.
 
 ## What's next for FreeSheet
 * Production hosting as a service

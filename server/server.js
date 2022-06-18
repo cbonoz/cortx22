@@ -3,7 +3,7 @@
 import * as Fastify from 'fastify'
 import mp from '@fastify/multipart'
 import cors from '@fastify/cors'
-import { getObject, listObjects, putObject } from './cortx.js'
+import { getBuckets, getObject, listObjects, putObject } from './cortx.js'
 
 const fastify = Fastify.fastify({logger: true})
 fastify.register(mp)
@@ -46,6 +46,11 @@ fastify.get('/objects/:bucket', async (request, reply) => {
   const {params} = request
   console.log('list objects', params.bucket);
   return await listObjects(params.bucket)
+})
+
+fastify.get('/buckets', async (request, reply) => {
+  console.log('get buckets')
+  return await getBuckets()
 })
 
 fastify.post('/object/:bucket', async (request, reply) => {
