@@ -3,12 +3,11 @@ import React, { useState } from "react";
 import CSVReader from "react-csv-reader";
 
 import { putObject } from "../util/api";
-import { DEFAULT_BUCKET } from "../util/constants";
+import { DEFAULT_BUCKET, UPLOAD_DESC } from "../util/constants";
 
-function UploadPage(props) {
+function UploadPage({bucket}) {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState();
-  const [bucket, setBucket] = useState(DEFAULT_BUCKET)
   const [error ,setError] = useState()
   const upload = async (data, fileInfo, originalFile) => {
     console.log("upload", data, fileInfo, originalFile);
@@ -44,9 +43,13 @@ function UploadPage(props) {
 
   return (
     <div className="container">
-      <h1>Upload new CSV data</h1>
-      <p></p>
-      <CSVReader onFileLoaded={upload} />
+      <h1>Upload new dataset to bucket</h1>
+      <p>{UPLOAD_DESC}</p>
+      {!bucket && <p className="error-text">No bucket selected</p>}
+      {bucket && <span>
+        <p><b>Active bucket: {bucket}</b></p>
+        <CSVReader onFileLoaded={upload} />
+      </span>}
       {data && (
         <div className="success">Successfully uploaded:<br/>
         <pre>

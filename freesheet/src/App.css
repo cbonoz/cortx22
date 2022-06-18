@@ -45,6 +45,13 @@
   color: red;
   font-style: italic;
 }
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
 
 .standard-btn {
   margin-top: 20px;

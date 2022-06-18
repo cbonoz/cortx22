@@ -8,10 +8,9 @@ import { getObject, listObjects, uploadRows } from "../util/api";
 import { APP_NAME, DEFAULT_BUCKET } from "../util/constants";
 import { storeFiles } from "../util/stor";
 
-function Exchange(props) {
+function Exchange({bucket}) {
   const [loading, setLoading] = useState(false);
   const [onboardLoading, setOnboardLoading] = useState(false)
-  const [bucket, setBucket] = useState(DEFAULT_BUCKET)
   // const [data, setData] = useState();
   const [error, setError] = useState()
   const [objects, setObjects] = useState()
@@ -83,24 +82,25 @@ function Exchange(props) {
         key: 'Size',
       },
       {
-        title: 'Onboard',
+        title: 'Push to IPFS',
         key: 'onboard',
         render: r => {
-          return <Button loading={onboardLoading} disabled={onboardLoading} onClick={() => pushFile(r)}>Onboard</Button>
+          return <Button loading={onboardLoading} disabled={onboardLoading} onClick={() => pushFile(r)}>Push</Button>
         }
       },
     ];
 
   return (
     <div className="container">
-      <Input prefix="Bucket:" value={bucket} onChange={e => setBucket(e.target.value)}/>
-      <Button type="primary" className="standard-btn" disabled={loading} onClick={list}>Load objects</Button>
+      {/* <Input prefix="Bucket:" value={bucket} onChange={e => setBucket(e.target.value)}/> */}
+      <h1>Exchange data between CortX and IPFS</h1>
+      {!bucket && <p className="error-text">No bucket selected</p>}
+      {/* <p>Use this page to exchange files between Cortx and IPFS</p> */}
+      <Button type="primary" className="standard-btn" disabled={loading || !bucket} onClick={list}>Load objects</Button>
+      {bucket && <p><b>Active bucket: {bucket}</b></p>}
       <Table loading={loading} dataSource={objects || []} columns={columns} />
 
-
-        {cid && <Button type="primary" className="standard-btn" onClick={() => navigate(`/onboard/${cid}/${fileName}`)}>View IPFS Entry</Button>}
-
-    
+      {cid && <Button type="primary" className="standard-btn" onClick={() => navigate(`/onboard/${cid}/${fileName}`)}>View IPFS entry</Button>}
     </div>
   );
 }

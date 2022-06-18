@@ -14,7 +14,7 @@ function DownloadNotebook({cid, fileName}) {
 
   return (
     <div>
-        <h1>Download Notebook</h1>
+        <h2>Download Notebook</h2>
         <a href={url} target="_blank">{url}</a>
         <p>Target file: <b>{fileName}</b></p>
 
