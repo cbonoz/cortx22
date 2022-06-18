@@ -1,5 +1,5 @@
 <p align='center'>
-    <img src="./img/logo.png" width=400/>
+    <img src="https://i.ibb.co/9n4VFC8/logo.png" width=400/>
 </p>
 
 FreeSheet
@@ -11,7 +11,7 @@ Built for the Cortx 2022 hackathon.
 
 ## Inspiration
 
-There's not a lot of great tools that support moving between a hosted instance and IPFS. I wanted to build a prototype app that made it easy to transfer csv data between IPFS and s3, and immediately import that data into a functioning jupyter notebook.
+There's not a lot of great tools that support moving between a hosted instance and IPFS. I wanted to build a prototype app that made it easy to transfer csv data between IPFS and S3, and immediately import that data into a functioning jupyter notebook.
 
 ## What it does
 
@@ -25,6 +25,8 @@ FreeSheet also 'onboards' any of your files into dynamically generated jupyter n
 * Exchange - push data sets effortlessly from your Cortx or AWS-hosted node to IPFS.
 * Access - Onboard your data sets immediately into Jupyter notebooks.
 
+Demo: <a href="" target="_blank">
+
 ## Running the project
 
 FreeSheet requires both the front and backend service to be running.
@@ -34,6 +36,8 @@ Define the following environment variables
 <pre>
     REACT_APP_STORAGE_KEY={YOUR WEB3 STORAGE KEY}
 </pre>
+
+Generate a web3.storage key <a href="https://web3.storage/" target="_blank">here</a>!
 
 From the root folder:
 `yarn; yarn start`
@@ -53,11 +57,16 @@ From the `/server` folder:
 
 The server should now be running on port 3001.
 
+You can also create a bucket in your conncted CortX instance using the command:
+`yarn create`
+
 #### Verifying the end to end connection
 
 If the front end is able to successfully connect to your running CortX or S3 instance, you should see a 'Connected' indicator here with the ability to select a bucket from the dropdown here:
 
 <img src="./img/connected.png" width=600/>
+
+After this you're ready to use FreeSheet as an interface to S3 and IPFS!
 
 ## How we built it
 

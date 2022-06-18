@@ -14,11 +14,14 @@ function About(props) {
       <br />
       <h1>About</h1>
       <div>
-        <p>
+        <h3>
           {APP_NAME}: {APP_DESC}
-        </p>
+        </h3>
+        <br/>
 
         <b>{APP_NAME} supports three main actions:</b>
+        <br/>
+        <br/>
 <p>
   <ol>
     <li>Upload - Upload a csv of data either directly to your cortx instance or IPFS.  </li>
