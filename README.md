@@ -81,6 +81,23 @@ It works.
 * Production hosting as a service
 * Or clone this repo and use as a tool to connect to your own cortx instance.
 
+## Screenshots
+
+#### Home page
+<img src="./img/home.png" width=800/>
+
+#### Upload to CortX / S3
+<img src="./img/upload.png" width=800/>
+
+#### Exchange between CortX and IPFS
+<img src="./img/exchange.png" width=800/>
+
+#### Onboard dataset to python notebook from the app
+<img src="./img/onboard.png" width=800/>
+
+#### Auto-generated python notebook
+<img src="./img/notebook.png" width=800/>
+
 ## Useful links
 * https://github.com/Seagate/cortx/tree/main/cortx-s3samplecode
 
