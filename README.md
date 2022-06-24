@@ -9,6 +9,8 @@ Effortlessly move and onboard csv data between Cortx and IPFS.
 
 Built for the CortX 2022 hackathon.
 
+Demo (youtube): <a href="https://youtu.be/tK_bkdXqsmw" target="_blank">https://youtu.be/tK_bkdXqsmw</a>
+
 ## Inspiration
 
 There are not a lot of great tools that support moving between a hosted instance and IPFS. I wanted to build a prototype app that made it easy to transfer csv data between IPFS and S3, and immediately import that data into a functioning jupyter notebook.
