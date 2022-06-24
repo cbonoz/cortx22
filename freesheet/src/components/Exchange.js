@@ -58,7 +58,9 @@ function Exchange({bucket}) {
       setCid(result)
       setFileName(fName)
     } catch (e) {
-      console.error(e)
+      const msg = e.message || e.toString()
+      console.error('Check your web3.storage key: ' + msg)
+      alert("Error uploading file: " + msg)
     } finally {
       setOnboardLoading(false)
       return;

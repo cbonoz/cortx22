@@ -62,7 +62,7 @@ You can also create a bucket in your conncted CortX instance using the command:
 
 #### Verifying the end-to-end connection
 
-If the front end is able to successfully connect to your running CortX or S3 instance, you should see a 'Connected' indicator here with the ability to select a bucket from the dropdown here:
+If the front end is able to successfully connect to your running CortX or S3 instance, you should see a 'Connected' indicator here with the ability to select a bucket from the dropdown here. If you are not connected, a 'Not connected' indicator will show.
 
 <img src="./img/connected.png" width=600/>
 
